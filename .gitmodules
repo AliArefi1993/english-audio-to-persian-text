@@ -1,0 +1,9 @@
+[submodule "ASR"]
+	path = ASR
+	url = https://github.com/AliArefi1993/ASR.git
+[submodule "translation"]
+	path = translation
+	url = https://github.com/AliArefi1993/translation.git
+[submodule "TaskOrchestrator"]
+	path = TaskOrchestrator
+	url = https://github.com/AliArefi1993/TaskOrchestrator.git
