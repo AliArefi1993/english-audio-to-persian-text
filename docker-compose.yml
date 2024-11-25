@@ -6,6 +6,10 @@ services:
     ports:
       - "5672:5672"
       - "15672:15672" # RabbitMQ Management UI
+    healthcheck:
+      test: rabbitmq-diagnostics check_port_connectivity
+      interval: 2s
+      retries: 60
 
   asr_service:
     build:
@@ -13,7 +17,8 @@ services:
     environment:
       - RABBITMQ_HOST=rabbitmq
     depends_on:
-      - rabbitmq
+      rabbitmq:
+        condition: service_healthy
     restart: always
     volumes:
       - /Users/...a/asr_models/models:/app/app/models # Host folder mapped to container
@@ -24,7 +29,8 @@ services:
     environment:
       - RABBITMQ_HOST=rabbitmq
     depends_on:
-      - rabbitmq
+      rabbitmq:
+        condition: service_healthy
     restart: always
     volumes:
       - /Users/...a/translation_models/models:/app/app/models # Host folder mapped to container
