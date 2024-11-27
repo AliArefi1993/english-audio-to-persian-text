@@ -1,0 +1,14 @@
+config:
+  target: "http://localhost:8000"
+  timeout: 5
+  phases:
+    - duration: 2    # Test duration in seconds
+      arrivalRate: 30 # Requests per second
+
+scenarios:
+  - flow:
+    - post:
+        url: '/process-audio/'
+        formData:
+          file:
+            fromFile: './test_audio_2.wav'
