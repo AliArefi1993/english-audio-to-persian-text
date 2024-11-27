@@ -1,6 +1,9 @@
 import requests
 import time
+import logging
 
+
+logger = logging.getLogger(__name__)
 # Config
 BASE_URL = "http://localhost:8000"
 
@@ -12,9 +15,9 @@ with open(file_path, "rb") as audio_file:
 
 if response.status_code == 202:
     request_id = response.json()["request_id"]
-    print(f"Request ID: {request_id}")
+    logger.info(f"Request ID: {request_id}")
 else:
-    print("Failed to start processing")
+    logger.error("Failed to start processing")
     exit()
 
 while True:
@@ -23,12 +26,12 @@ while True:
 
     if result_data["status"] == "completed":
         end_time = time.time()
-        print(f"Transcription completed: {result_data['result']}")
-        print(f"Time taken: {end_time - start_time:.2f} seconds")
+        logger.info(f"Transcription completed: {result_data['result']}")
+        logger.info(f"Time taken: {end_time - start_time:.2f} seconds")
         break
     elif result_data["status"] == "not_found":
-        print("Request not found")
+        logger.warning("Request not found")
         break
     else:
-        print("Still processing...")
+        logger.info("Still processing...")
         time.sleep(2)
