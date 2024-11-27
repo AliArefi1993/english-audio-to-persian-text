@@ -13,4 +13,6 @@ scenarios:
           file:
             fromFile: './test_audio_2.wav'
     - get:
-        url: '/result'   # After posting the audio, request the result
+        url: '/result/' 
+        query:
+          request_id: "c07a8d8f-e74c-4d1c-aaff-dac5e66bd44f"

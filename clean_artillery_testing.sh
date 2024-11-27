@@ -2,11 +2,11 @@
 
 docker compose up -d
 
-# sleep to be sure all services are up and ready
+echo "Waiting 10 sec for all services to be up and ready..."
 sleep 10
 
 # Run tests
-artillery run test.yml
+artillery run test.yml --output results.json
 
 # Run cleanup
 docker-compose down
