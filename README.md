@@ -22,11 +22,17 @@ It is recommended to use this lightweight model:
   3. Configure the `MODEL_NAME` in the ASR microservice configuration.
 
 ###### Configure Translation Model
+sample .dockerenv file:
+```
+ASR_MODELS=/Users/...a/asr_models/models
+TRANSLATION_MODELS=/Users/...a/translation_models/models
+```
 It is recommended to use this lightweight model:
 - **Download**: [Argos Translate English-Persian Model](https://argos-net.com/v1/translate-en_fa-1_5.argosmodel)
 - **Setup**:
   1. Place the downloaded file in the directory specified by `TRANSLATION_MODELS` in your `.dockerenv` file.
   2. Configure the `MODEL_NAME` in the Translation microservice configuration.
+
 sample .dockerenv file:
 ```
 ASR_MODELS=/Users/...a/asr_models/models
