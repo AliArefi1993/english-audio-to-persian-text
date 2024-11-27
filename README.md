@@ -23,10 +23,6 @@ It is recommended to use this lightweight model:
 
 ###### Configure Translation Model
 sample .dockerenv file:
-```
-ASR_MODELS=/Users/...a/asr_models/models
-TRANSLATION_MODELS=/Users/...a/translation_models/models
-```
 It is recommended to use this lightweight model:
 - **Download**: [Argos Translate English-Persian Model](https://argos-net.com/v1/translate-en_fa-1_5.argosmodel)
 - **Setup**:
