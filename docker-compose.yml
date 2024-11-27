@@ -10,6 +10,7 @@ services:
       test: rabbitmq-diagnostics check_port_connectivity
       interval: 2s
       retries: 60
+    restart: always
 
   asr_service:
     build:
@@ -22,6 +23,12 @@ services:
     restart: always
     volumes:
       - /Users/...a/asr_models/models:/app/app/models # Host folder mapped to container
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: "1G"
 
   translation_service:
     build:
@@ -34,6 +41,11 @@ services:
     restart: always
     volumes:
       - /Users/...a/translation_models/models:/app/app/models # Host folder mapped to container
+    deploy:
+      resources:
+        limits:
+          cpus: "0.4"
+          memory: "1G"
 
   orchestrator:
     build:
@@ -47,7 +59,11 @@ services:
       - asr_service
       - translation_service
     restart: always
-
+    # deploy:
+    #   resources:
+    #     limits:
+    #       cpus: "0.3"
+    #       memory: "0.5G"
   mongodb:
     image: mongo:6.0
     container_name: mongodb
