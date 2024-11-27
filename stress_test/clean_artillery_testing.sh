@@ -1,5 +1,6 @@
 #!/bin/bash
 
+docker-compose down
 docker compose up -d
 
 echo "Waiting 10 sec for all services to be up and ready..."
