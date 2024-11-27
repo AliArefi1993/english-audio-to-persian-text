@@ -1,9 +1,9 @@
 config:
   target: "http://localhost:8000"
-  timeout: 5
+  timeout: 10
   phases:
-    - duration: 2    # Test duration in seconds
-      arrivalRate: 30 # Requests per second
+    - duration: 60    # Test duration in seconds
+      arrivalRate: 2 # Requests per second
 
 scenarios:
   - flow:
@@ -12,3 +12,5 @@ scenarios:
         formData:
           file:
             fromFile: './test_audio_2.wav'
+    - get:
+        url: '/result'   # After posting the audio, request the result
